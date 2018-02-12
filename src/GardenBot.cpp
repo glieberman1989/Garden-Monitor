@@ -5,8 +5,6 @@
 
 RTC_DS3231 rtc;
 
-char daysOfTheWeek[7][12] = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
-
 int soilVal_1 = 0; //value for storing moisture value
 int soilPin_1 = A0;//Declare a variable for the soil moisture sensor
 int soilPower = 8;//Variable for Soil moisture Power
@@ -17,9 +15,10 @@ int pumpPower = 4;//relay for turning pump off and on
 const unsigned long interval = 3UL*60UL*60UL*1000UL;//run watering loop every 3 hours
 
 void setup() {
-//RTC setup
   Serial.begin(9600);
   delay(3000); // wait for console opening
+
+  //RTC setup
   if (! rtc.begin()) {
     Serial.println("Couldn't find RTC");
     while (1);
@@ -40,17 +39,19 @@ void setup() {
 void loop() {
   DateTime now = rtc.now();
 
-  while (now.hour() >= 8 && now.hour() <= 18 && now.minute() == 00 && now.second() == 00)//only water between 8AM-6PM
-  {
-    digitalWrite(soilPower, HIGH);//turn D7 "On"
+  //while (now.hour() >= 8 && now.hour() <= 18 && now.minute() == 00 && now.second() == 00)//only water between 8AM-6PM
+  //{
+    digitalWrite(soilPower, HIGH);//turn D8 "On"
     delay(10);//wait 10 milliseconds
-    soilVal_1 = analogRead(soilPin_1);//Read the value form sensor
-    digitalWrite(soilPower, LOW);//turn D7 "Off"
-    if (soilVal_1 < soilThres) {//if soil wetness is below the threshold value, start watering
+    //soilVal_1 = analogRead(soilPin_1);//Read the value form sensor
+    //digitalWrite(soilPower, LOW);//turn D8 "Off"
+    //if (soilVal_1 < soilThres) {//if soil wetness is below the threshold value, start watering
       digitalWrite(pumpPower, HIGH);
-      delay(60000);//water for 1 minute
+      delay(1000);//water for 1 minute
       digitalWrite(pumpPower, LOW);
-    }
-    delay(interval);
-  }
+      delay(1000);
+      digitalWrite(soilPower, LOW);
+    //}
+    //delay(interval);
+  //}
 }
