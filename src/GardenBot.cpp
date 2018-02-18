@@ -39,8 +39,7 @@ void setup() {
 void loop() {
   DateTime now = rtc.now();
 
-  //while (now.hour() >= 8 && now.hour() <= 18 && now.minute() == 00 && now.second() == 00)//only water between 8AM-6PM
-  //{
+  while (now.hour() >= 8 && now.hour() <= 18 && now.minute() == 00 && now.second() == 00) {//only water between 8AM-6PM
     digitalWrite(soilPower, HIGH);//turn D8 "On"
     delay(10);//wait 10 milliseconds
     //soilVal_1 = analogRead(soilPin_1);//Read the value form sensor
@@ -51,7 +50,6 @@ void loop() {
       digitalWrite(pumpPower, LOW);
       delay(1000);
       digitalWrite(soilPower, LOW);
-    //}
+    }
     //delay(interval);
-  //}
 }
