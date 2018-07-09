@@ -1,4 +1,4 @@
-# Garden-Monitor
+# Solar-Garden-Bot
 garden health monitor and watering system
 
 To-Do:
