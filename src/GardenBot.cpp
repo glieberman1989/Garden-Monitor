@@ -16,7 +16,7 @@ const int manualPin = 3;
 const int pumpPower = 4;//relay for turning pump off and on
 unsigned long pumpStart;
 unsigned long pumpEnd;
-volatile int manualState = 0;
+volatile int manualState = 1;
 
 void setup() {
   Serial.begin(9600);
