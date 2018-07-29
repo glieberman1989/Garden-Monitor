@@ -1,6 +1,8 @@
 # Garden-Monitor
-garden health monitor and watering system
+Solar powered garden health monitor and watering system
 
 To-Do:
 -determine soil moisture threshold
--add push button pump override control
+-add weather station integration
+-add wifi card functionality
+  -control over local network
